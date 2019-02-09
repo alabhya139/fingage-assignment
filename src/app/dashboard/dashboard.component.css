@@ -1,0 +1,60 @@
+.container{
+    margin-top: 4vmin;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons{
+    margin: 1vmin;
+    border-radius: 60%;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+.button{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
+}
+
+.add-user-form{
+    margin-bottom: 4vmin;
+}
+
+input{
+    margin: 1vmin;
+}
+
+.invalid-feedback{
+    text-align: center;
+}
+
+.form{
+    margin-top: 20vmin;
+}
+
+.heading{
+    color: #ffffff;
+    font-family: 'Bahinia', cursive;
+    font-size: 8vmin;
+    text-align: center;
+    margin-bottom: 4vmin;
+}
+
+.button1{
+    width: 50%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
+}

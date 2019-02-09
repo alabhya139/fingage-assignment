@@ -1,0 +1,65 @@
+<div *ngIf="value===false && showuser===false" class="col-md-6 container">
+    <ul *ngFor="let user of userDetails; let i=index;" class="list-group">
+        <li (click)="showUser(i)" class="list-group-item" data-toggle="tooltip" data-placement="top" title="Click to view more">
+            <div class="user-name">{{user.username}}</div>
+            <div class="buttons">
+              <button (click)="editUser(i)" type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Edit User">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button (click)= "deleteUser(i)" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete User">
+              <i class="fas fa-trash-alt"></i>
+          </button>
+            </div>
+            
+        </li>
+    </ul>
+</div>
+
+<div *ngIf= "value===false && showuser===false" class="col-md-6 container">
+  <button (click)="toggle()" class="button1 btn btn-success">Add User</button>
+</div>
+
+<div *ngIf= "value===true && showuser===false" class="form col-md-4 add-user-form container">
+    <h1 class="heading">Create User</h1>
+    <form [formGroup]= "addUser" (submit)="adduser()">
+        <input [ngClass]="{'is-invalid':
+        (addUser.get('username').touched || addUser.get('username').dirty) && addUser.get('username').invalid}" formControlName="username" class="form-control" type="text" placeholder="Enter name">
+        <div class="invalid-feedback">
+            Please enter name.
+        </div>
+        <input [ngClass]="{'is-invalid':
+        (addUser.get('password').touched || addUser.get('password').dirty) && addUser.get('password').invalid}" formControlName="password" class="form-control" type="password" placeholder="Enter password">
+        <div class="invalid-feedback">
+            Please enter password.
+        </div>
+        <input [ngClass]="{'is-invalid':
+        (addUser.get('email').touched || addUser.get('email').dirty) && addUser.get('email').invalid}" formControlName="email" class="form-control" type="text" placeholder="Enter email">
+        <div class="invalid-feedback">
+            Please enter email.
+        </div>
+        <input [ngClass]="{'is-invalid':
+        (addUser.get('phone_no').touched || addUser.get('phone_no').dirty) && addUser.get('phone_no').invalid}" formControlName="phone_no" class="form-control" type="text" placeholder="Enter phone">
+        <div class="invalid-feedback">
+            Please enter phone.
+        </div>
+        <input *ngIf="isEditable===false" [ngClass]="{'disabled':addUser.invalid}" [disabled]="addUser.invalid" type="submit" class="button btn btn-success" value="Add User">
+        <button *ngIf="isEditable===true" (click)="editIt()" [ngClass]="{'disabled':addUser.invalid}" [disabled]="addUser.invalid" class="button btn btn-success" >Edit User</button>
+    </form>
+
+    <button (click)="back()" class="button btn btn-danger">Back</button>
+</div>
+
+<div *ngIf="showuser===true" class="col-md-4 container">
+    <div class="card">
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item">Username:&nbsp;&nbsp;{{userInfo.username}}</li>
+            <li class="list-group-item">Email:&nbsp;&nbsp;{{userInfo.email}}</li>
+            <li class="list-group-item">Phone:&nbsp;&nbsp;{{userInfo.phone_no}}</li>
+            <li class="list-group-item">Created At:&nbsp;&nbsp;{{userInfo.created_at}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <button (click)="back()" class="button btn btn-danger">Back</button>
+</div>
